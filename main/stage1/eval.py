@@ -2,6 +2,7 @@ import config
 import data_loader
 import engine
 import pickle
+import torch
 import numpy as np
 
 from stage1_dataset import ArticleClassificationDataset

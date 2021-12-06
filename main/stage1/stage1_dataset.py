@@ -53,9 +53,9 @@ class ArticleClassificationDataset(Dataset):
         else:
             num1 = self.pairingTable[index][0]
             num2 = self.pairingTable[index][1]
-            with open('../../public_processed_test_files' + str(num1) + '.txt', 'r', encoding='UTF-8') as text1:
+            with open('../../public_processed_test_files/' + str(num1) + '.txt', 'r', encoding='UTF-8') as text1:
                 file1 = text1.read()
-            with open('../../public_processed_test_files' + str(num2) + '.txt', 'r', encoding='UTF-8') as text2:
+            with open('../../public_processed_test_files/' + str(num2) + '.txt', 'r', encoding='UTF-8') as text2:
                 file2 = text2.read()    
 
             inputs = self.tokenizer.encode_plus(
