@@ -10,5 +10,5 @@ MODEL_PATH = "../../dict/saved_model.pth"
 bert_config = BertConfig.from_pretrained('bert-base-chinese')
 bert_config.num_labels = 1
 bert_config.max_position_embeddings = 1500
-bert_config.num_hidden_layers = 6
-bert_config.num_attention_heads = 2
+bert_config.num_hidden_layers = 12
+bert_config.num_attention_heads = 12
