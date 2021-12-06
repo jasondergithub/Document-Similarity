@@ -20,7 +20,7 @@ model.load_state_dict(torch.load(config.MODEL_PATH))
 model.to(device)
 
 outputs = engine.eval_fn(test_data_loader, model, device)
-outputs = np.array(outputs) >= 0.5
+outputs = np.array(outputs) >= 0.8
 
 with open('../../dict/first_stage_public_test.txt', 'rb') as fp:
      table = pickle.load(fp)
