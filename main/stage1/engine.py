@@ -40,7 +40,6 @@ def train_fn(data_loader, model, optimizer, device, scheduler):
 
 def eval_fn(data_loader, model, device):
     model.eval()
-    fin_targets = []
     fin_outputs = []
 
     with torch.no_grad():
@@ -48,16 +47,13 @@ def eval_fn(data_loader, model, device):
             tokens_tensor = data['tokens_tensor']
             segments_tensor = data['segments_tensor']
             masks_tensor = data['masks_tensor']
-            targets = data['target']
 
             tokens_tensor = tokens_tensor.to(device, dtype=torch.long)
             segments_tensor = segments_tensor.to(device, dtype=torch.long)
-            masks_tensor = masks_tensor.to(device, dtype=torch.long)
-            targets = targets.to(device, dtype=torch.float)   
+            masks_tensor = masks_tensor.to(device, dtype=torch.long)  
 
             outputs = model(input_ids=tokens_tensor, token_type_ids=segments_tensor, attention_mask=masks_tensor)
             logits = outputs.logits   
-            fin_targets.extend(targets.cpu().detach().numpy().tolist())
             fin_outputs.extend(torch.sigmoid(logits).cpu().detach().numpy().tolist())
     
-    return fin_outputs, fin_targets
+    return fin_outputs
