@@ -12,6 +12,7 @@ from transformers import BertForSequenceClassification
 from transformers import AdamW
 from transformers import get_linear_schedule_with_warmup
 from sklearn import metrics
+from sklearn.metrics import f1_score
 
 def run_train(tableNumber):
     trainset = ArticleClassificationDataset('train', tableNumber)
@@ -60,7 +61,9 @@ def run_train(tableNumber):
 
         outputs = np.array(outputs) >= 0.8
         accuracy = metrics.accuracy_score(targets, outputs)
+        fScore = f1_score(targets, outputs)
         print(f"After training {epoch+1} epoch(s), Accuracy Score = {accuracy}")
+        print(f"After training {epoch+1} epoch(s), F1 Score = {fScore}")
     #save model
     torch.save(model.state_dict(), config.MODEL_PATH)
     
