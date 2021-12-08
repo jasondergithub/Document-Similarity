@@ -12,3 +12,4 @@ bert_config.num_labels = 1
 bert_config.max_position_embeddings = 1500
 bert_config.num_hidden_layers = 6
 bert_config.num_attention_heads = 4
+bert_config.output_hidden_states=True
