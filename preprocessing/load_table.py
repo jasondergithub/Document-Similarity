@@ -16,3 +16,11 @@ for i in range(20):
     random.shuffle(subtable)
     with open("../table/" + name_list[i], "wb") as fp:
         pickle.dump(subtable, fp)
+
+imbalance_name_list = ['imbalanceTable1.txt', 'imbalanceTable2.txt']
+for i in range(2):
+    subtable = random.sample(unrelated_table, 4143)
+    subtable = subtable + related_table
+    random.shuffle(subtable)
+    with open("../imbalance_table/" + imbalance_name_list[i], "wb") as fp:
+        pickle.dump(subtable, fp)

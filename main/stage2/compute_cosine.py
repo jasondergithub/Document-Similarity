@@ -1,6 +1,7 @@
 import torch
 import pickle
 import json
+import torch.nn as nn
 
 from stage1 import config
 from transformers import BertForSequenceClassification
@@ -21,5 +22,19 @@ def computation():
 
         with open('../../public_processed_test_files/' + str(prediction_list[i][1]) + '.txt', 'r', encoding='UTF-8') as text2:
             file2 = text2.read()
+        
+        labels = torch.tensor([1]).unsqueeze(0)
 
-        embedding1 = model(file1) 
+        input1 = config.tokenizer(file1, return_tensors="pt")
+        embedding1 = model(**input1, labels=labels, output_hidden_states=True)
+        h1 =  embedding1.hidden_states[-1]
+
+        input2 = config.tokenizer(file2, return_tensors="pt")
+        embedding2 = model(**input2, labels=labels, output_hidden_states=True)
+        h2 =  embedding2.hidden_states[-1]
+
+        cos = nn.CosineSimilarity(dim=2, eps=1e-6)
+        output = cos(input1, input2)
+
+if __name__ == "__main__":
+    computation()
