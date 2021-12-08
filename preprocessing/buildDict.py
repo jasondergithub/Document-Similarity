@@ -5,26 +5,19 @@
 import pandas as pd
 import numpy as np
 import json
-
-# 讀取檔案
-file1 = pd.read_excel('../data/Keywords/chemList.xlsx', header=None)
-file2 = pd.read_excel('../data/Keywords/cropList.xlsx', header=None)
-file3 = pd.read_excel('../data/Keywords/pestList.xlsx', header=None)
+import os
 keywords_dict = {}
 
 # 寫入字典
-for i in range(len(file1)):
-    for j in range(len(file1.iloc[i]) -1):
-        keywords_dict[file1.iloc[i, j]] = file1.iloc[i, j]
 
-for i in range(len(file2)):
-    for j in range(len(file2.iloc[i]) -1):
-        keywords_dict[file2.iloc[i, j]] = file2.iloc[i, j]
-
-for i in range(len(file3)):
-    for j in range(len(file3.iloc[i]) -1):
-        keywords_dict[file3.iloc[i, j]] = file3.iloc[i, j]
-
+for dirName, dum, fileNames in os.walk('../data/Keywords'):
+    for file in fileNames:
+        path = os.path.join(dirName, file)
+        print(path)
+        file1 = pd.read_excel(path, header=None)
+        for j in range(len(file1)):
+            for i in list(file1.loc[j].dropna()):
+                keywords_dict[i] = i
 
 keywords_dict['台北'] = '臺北'
 keywords_dict['臺北'] = '臺北'
@@ -69,7 +62,7 @@ for key in keys_list:
         keyword_list.append(value)
 
 print(keyword_list)
-
+print(keywords_dict['腈硫醌可濕性粉劑'])
 #save dictionary
 tf = open('../dict/keywords_dict.json', 'w')
 json.dump(keywords_dict, tf)
