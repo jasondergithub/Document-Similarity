@@ -72,6 +72,6 @@ if __name__ == "__main__":
         print('-------------------------------------')
         print(f'Table : {i+1}')
         if (i+1) > 5:
-            config.Epoch = 1
+            config.EPOCHS = 1
         run_train(i+1)
         print('-------------------------------------')

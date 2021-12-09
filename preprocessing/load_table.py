@@ -14,7 +14,7 @@ for i in range(20):
     if (i+1)%5 == 0:
         subtable = random.sample(unrelated_table, 4143)
     else:
-        subtable = random.sample(unrelated_table, 1381)    
+        subtable = random.sample(unrelated_table, 2762)    
     subtable = subtable + related_table
     random.shuffle(subtable)
     with open("../table/" + name_list[i], "wb") as fp:
