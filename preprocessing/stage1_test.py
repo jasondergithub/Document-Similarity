@@ -9,6 +9,7 @@ directory = r'../public_processed_test_files'
 for filename in os.listdir(directory):
     total_articles.append(int(filename[:-4]))
 
+# print(total_articles)
 amount = len(total_articles)
 for i in range(amount):
     article_no = []
