@@ -68,7 +68,7 @@ def run_train(tableNumber):
     torch.save(model.state_dict(), config.MODEL_PATH)
     
 if __name__ == "__main__":
-    for i in range(11):
+    for i in range(8):
         print('-------------------------------------')
         print(f'Table : {i+1}')
         # if (i+1) == 5:
