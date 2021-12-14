@@ -22,7 +22,7 @@ model.to(device)
 outputs = engine.eval_fn(test_data_loader, model, device)
 outputs = np.array(outputs) >= 0.8
 
-with open('../../dict/first_stage_public_test.txt', 'rb') as fp:
+with open('../../dict/private_test.txt', 'rb') as fp:
      table = pickle.load(fp)
 
 for i, score in enumerate(outputs):

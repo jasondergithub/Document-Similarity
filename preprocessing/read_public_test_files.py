@@ -8,14 +8,14 @@ keys_list = list(keywords)
 keyword_list = []
 
 # iterate files in the given directory
-directory = r'C:\Users\劉碩元\Desktop\AI-CUP\publicTestData'
+directory = r'C:\Users\Jason\Documents\Document-Similarity\dataPublicComplete'
 sentence = ''
 for filename in os.listdir(directory):
-    with open('../publicTestData/' + filename, 'r', encoding='utf-8') as f:
+    with open('../dataPublicComplete/' + filename, 'r', encoding='utf-8') as f:
         for line in f:
             sentence = line[:-1]
             break   
-    with open('../publicTestData/' + filename, 'r', encoding='utf-8') as f:
+    with open('../dataPublicComplete/' + filename, 'r', encoding='utf-8') as f:
         text = f.read()
 
     for key in keys_list:
@@ -28,7 +28,7 @@ for filename in os.listdir(directory):
     sentence += ','.join(keyword_list)
     sentence += '。'
 
-    f = open('../public_processed_test_files/' + filename, 'w', encoding='UTF-8')
+    f = open('../private_processed_test_files/' + filename, 'w', encoding='UTF-8')
     f.write(sentence)
     f.close()
     keyword_list.clear()
