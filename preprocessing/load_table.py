@@ -12,7 +12,7 @@ name_list = ['table1.txt', 'table2.txt', 'table3.txt', 'table4.txt', 'table5.txt
 'table15.txt', 'table16.txt', 'table17.txt', 'table18.txt', 'table19.txt', 'table20.txt']
 for i in range(20):
     if (i+1) % 5 == 0:
-        subtable = random.sample(unrelated_table, 4143)
+        subtable = random.sample(unrelated_table, 2762)
     else:
         subtable = random.sample(unrelated_table, 1381)    
     subtable = subtable + related_table
